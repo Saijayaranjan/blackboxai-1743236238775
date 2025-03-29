@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Data Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                        <span class="ml-2 text-xl font-bold text-gray-900">Byte for Bait</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-green-500 text-sm font-medium">Home</a>
+                    <a href="soildata-new.html" class="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-gray-300 text-sm font-medium">Soil Data</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Soil Data Dashboard
+                </h1>
+                <p class="mt-3 text-xl text-gray-500">
+                    Real-time monitoring of your soil conditions
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+                <!-- Soil Moisture Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full p-3">
+                            <i class="fas fa-tint text-green-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Soil Moisture</h3>
+                            <p class="mt-1 text-2xl font-semibold text-gray-900">
+                                <span id="moisture-value">0</span>%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temperature Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full p-3">
+                            <i class="fas fa-thermometer-half text-green-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Temperature</h3>
+                            <p class="mt-1 text-2xl font-semibold text-gray-900">
+                                <span id="temp-value">0</span>°C
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Humidity Card -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full p-3">
+                            <i class="fas fa-cloud text-green-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-medium text-gray-900">Humidity</h3>
+                            <p class="mt-1 text-2xl font-semibold text-gray-900">
+                                <span id="humidity-value">0</span>%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
