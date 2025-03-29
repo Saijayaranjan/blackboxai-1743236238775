@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="basic.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                        <span class="ml-2 text-xl font-bold text-gray-900">AgriTech</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="soil-dashboard.html" class="bg-green-100 text-green-700 px-3 py-2 rounded-md text-sm font-medium">Soil Data</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Analytics</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Soil Health Dashboard
+                </h1>
+                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500">
+                    Real-time monitoring of your soil conditions
+                </p>
+            </div>
+
+            <!-- Data Cards -->
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Soil Moisture Card -->
+                <div class="data-card bg-white p-6 rounded-lg">
+                    <div class="flex flex-col items-center">
+                        <div class="gauge mb-4">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                <circle id="moisture-gauge" cx="50" cy="50" r="45" fill="none" stroke="#10b981" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283" class="gauge-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span id="moisture-value" class="value-display text-green-600">0%</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Soil Moisture</h3>
+                        <p class="mt-2 text-sm text-gray-500 text-center">
+                            Optimal range: 40-60% for most crops
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Temperature Card -->
+                <div class="data-card bg-white p-6 rounded-lg">
+                    <div class="flex flex-col items-center">
+                        <div class="gauge mb-4">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                <circle id="temp-gauge" cx="50" cy="50" r="45" fill="none" stroke="#f59e0b" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283" class="gauge-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span id="temp-value" class="value-display text-yellow-500">0°C</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Temperature</h3>
+                        <p class="mt-2 text-sm text-gray-500 text-center">
+                            Ideal range: 15-25°C for plant growth
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Humidity Card -->
+                <div class="data-card bg-white p-6 rounded-lg">
+                    <div class="flex flex-col items-center">
+                        <div class="gauge mb-4">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                                <circle id="humidity-gauge" cx="50" cy="50" r="45" fill="none" stroke="#3b82f6" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283" class="gauge-circle"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span id="humidity-value" class="value-display text-blue-500">0%</span>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Humidity</h3>
+                        <p class="mt-2 text-sm text-gray-500 text-center">
+                            Optimal range: 40-70% relative humidity
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Content -->
+            <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+                <!-- Recommendations -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Recommendations</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-tint text-green-600"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-sm font-medium text-gray-900">Irrigation</h4>
+                                <p class="mt-1 text-sm text-gray-500" id="irrigation-recommendation">
+                                    Checking soil moisture...
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                <i class="fas fa-temperature-high text-yellow-500"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-sm font-medium text-gray-900">Temperature</h4>
+                                <p class="mt-1 text-sm text-gray-500" id="temp-recommendation">
+                                    Checking temperature...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Historical Data -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Historical Trends</h3>
+                    <div class="h-64 bg-gray-50 rounded-md flex items-center justify-center">
+                        <p class="text-gray-500">Historical data visualization will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Update gauge animations
+        function updateGauge(id, value, max) {
+            const circle = document.getElementById(id);
+            const offset = 283 - (283 * (value / max));
+            circle.style.strokeDashoffset = offset;
+        }
+
+        // Update recommendations
+        function updateRecommendations(data) {
+            const moisture = parseFloat(data.moisture);
+            const temp = parseFloat(data.temperature);
+            
+            // Irrigation recommendation
+            const irrigationRec = document.getElementById('irrigation-recommendation');
+            if (moisture < 40) {
+                irrigationRec.textContent = 'Water needed - soil is too dry';
+                irrigationRec.className = 'mt-1 text-sm text-red-500';
+            } else if (moisture > 60) {
+                irrigationRec.textContent = 'No watering needed - soil is moist enough';
+                irrigationRec.className = 'mt-1 text-sm text-green-500';
+            } else {
+                irrigationRec.textContent = 'Soil moisture is optimal';
+                irrigationRec.className = 'mt-1 text-sm text-green-500';
+            }
+
+            // Temperature recommendation
+            const tempRec = document.getElementById('temp-recommendation');
+            if (temp < 15) {
+                tempRec.textContent = 'Consider warming measures - temperature is low';
+                tempRec.className = 'mt-1 text-sm text-blue-500';
+            } else if (temp > 25) {
+                tempRec.textContent = 'Consider cooling measures - temperature is high';
+                tempRec.className = 'mt-1 text-sm text-red-500';
+            } else {
+                tempRec.textContent = 'Temperature is optimal for plant growth';
+                tempRec.className = 'mt-1 text-sm text-green-500';
+            }
+        }
+    </script>
+</body>
+</html>
