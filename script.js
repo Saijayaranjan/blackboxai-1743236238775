@@ -5,8 +5,39 @@ let sensorData = {
     humidity: 0
 };
 
+// Dark Mode Toggle Functionality
+function setupDarkMode() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (!darkModeToggle) return;
+    
+    const icon = darkModeToggle.querySelector('i');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Initialize based on user preference or system preference
+    if (localStorage.getItem('darkMode') === 'enabled' || 
+        (localStorage.getItem('darkMode') === null && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        icon?.classList?.replace('fa-moon', 'fa-sun');
+    }
+
+    // Set up click handler
+    darkModeToggle.addEventListener('click', function() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        if (icon) {
+            if (isDark) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+    });
+}
+
 // Mobile menu toggle and data fetching
 document.addEventListener('DOMContentLoaded', function() {
+    setupDarkMode();
     // Fetch sensor data every 5 seconds
     setInterval(fetchSensorData, 5000);
     fetchSensorData();
@@ -17,15 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('humidity-value').textContent = sensorData.humidity + '%';
     }
 
-    // Fetch sensor data from server
-    async function fetchSensorData() {
-        try {
-            const response = await fetch('/api/sensor-data');
-            sensorData = await response.json();
-            updateSoilDataDisplay();
-        } catch (error) {
-            console.error('Error fetching sensor data:', error);
-        }
+    // Generate mock sensor data
+    function fetchSensorData() {
+        // Always use mock data in development
+        sensorData = {
+            moisture: Math.floor(Math.random() * 100),
+            temperature: Math.floor(Math.random() * 30),
+            humidity: Math.floor(Math.random() * 100)
+        };
+        updateSoilDataDisplay();
     }
 
     // Smooth scrolling for anchor links
