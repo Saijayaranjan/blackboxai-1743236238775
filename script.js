@@ -1,5 +1,33 @@
-// Mobile menu toggle functionality
+// Sensor data and Firebase integration
+let sensorData = {
+    moisture: 0,
+    temperature: 0,
+    humidity: 0
+};
+
+// Mobile menu toggle and data fetching
 document.addEventListener('DOMContentLoaded', function() {
+    // Fetch sensor data every 5 seconds
+    setInterval(fetchSensorData, 5000);
+    fetchSensorData();
+    // Update soil data display
+    function updateSoilDataDisplay() {
+        document.getElementById('moisture-value').textContent = sensorData.moisture + '%';
+        document.getElementById('temp-value').textContent = sensorData.temperature + '°C';
+        document.getElementById('humidity-value').textContent = sensorData.humidity + '%';
+    }
+
+    // Fetch sensor data from server
+    async function fetchSensorData() {
+        try {
+            const response = await fetch('/api/sensor-data');
+            sensorData = await response.json();
+            updateSoilDataDisplay();
+        } catch (error) {
+            console.error('Error fetching sensor data:', error);
+        }
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
