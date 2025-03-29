@@ -81,3 +81,62 @@
         display: none;
     }
 }
+
+/* Dashboard specific styles */
+.value-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    min-width: 100px;
+    text-align: center;
+    color: #3b82f6;
+}
+
+.value-display:empty:before {
+    content: "N/A";
+    color: #6b7280;
+    font-style: italic;
+}
+
+.dark .value-display {
+    color: #60a5fa;
+}
+
+.dark .value-display:empty:before {
+    color: #9ca3af;
+}
+
+#crop-recommendations .card {
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+.dark #crop-recommendations .card {
+    border-color: #374151;
+}
+
+#crop-recommendations .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#sensorChart {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+.sensor-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.dark .sensor-card {
+    background-color: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
