@@ -33,31 +33,7 @@ sensor_data = {
 def index():
     return app.send_static_file('index.html')
 
-@app.route('/api/sensor-data')
-def get_sensor_data():
-    try:
-        # Get latest data from Firebase
-        ref = db.reference('/sensor_data')
-        data = ref.get()
-        if data:
-            global sensor_data
-            sensor_data = data
-        else:
-            # Simulate data if none available
-            sensor_data = {
-                'moisture': round(30 + 50 * (time.time() % 1), 1),
-                'temperature': round(20 + 10 * (time.time() % 1), 1),
-                'humidity': round(40 + 30 * (time.time() % 1), 1)
-            }
-        return jsonify(sensor_data)
-    except Exception as e:
-        print(f"Error fetching from Firebase: {e}")
-        # Return simulated data
-        return jsonify({
-            'moisture': round(30 + 50 * (time.time() % 1), 1),
-            'temperature': round(20 + 10 * (time.time() % 1), 1),
-            'humidity': round(40 + 30 * (time.time() % 1), 1)
-        })
+# All API endpoints removed - using mock data in frontend instead
 
 def run_server():
     app.run(host='0.0.0.0', port=8001, threaded=True)
