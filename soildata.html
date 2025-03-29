@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Data Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .glow { box-shadow: 0 0 15px rgba(74, 222, 128, 0.5); }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-gray-900 opacity-90"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBvcGFjaXR5PSIwLjEiPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="py-6 px-4 sm:px-6 lg:px-8 bg-gray-800 bg-opacity-50 backdrop-blur-md border-b border-green-500 border-opacity-30">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-3xl font-bold">Soil Data Dashboard</h1>
+                <nav>
+                    <a href="index.html" class="text-green-400 hover:text-green-300">Home</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Soil Data Section -->
+        <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-2xl font-semibold text-center mb-6">Real-time Soil Data</h2>
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                <i class="fas fa-tint text-white text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Soil Moisture</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-gray-900">
+                                            <span id="moisture-value">0%</span>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                <i class="fas fa-thermometer-half text-white text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Temperature</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-gray-900">
+                                            <span id="temp-value">0°C</span>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                <i class="fas fa-cloud text-white text-xl"></i>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Humidity</dt>
+                                    <dd>
+                                        <div class="text-lg font-medium text-gray-900">
+                                            <span id="humidity-value">0%</span>
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
