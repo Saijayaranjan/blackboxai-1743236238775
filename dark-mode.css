@@ -1,0 +1,51 @@
+:root {
+    --bg-light: #f8f9fa;
+    --text-light: #333;
+    --bg-dark: #1a202c;
+    --text-dark: #f7fafc;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.dark .bg-white {
+    background-color: #2d3748;
+}
+
+.dark .text-gray-900 {
+    color: #f7fafc;
+}
+
+.dark .text-gray-500 {
+    color: #a0aec0;
+}
+
+.dark .bg-gray-50 {
+    background-color: #1a202c;
+}
+
+.dark .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+#darkModeToggle {
+    transition: transform 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    transform: scale(1.1);
+}
