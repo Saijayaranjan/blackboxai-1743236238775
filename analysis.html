@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriTech - Data Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                        <span class="ml-2 text-xl font-bold text-gray-900">AgriTech</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="soil-dashboard.html" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Soil Data</a>
+                    <a href="analysis.html" class="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-green-500 text-sm font-medium">Analysis</a>
+                    <a href="about.html" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Advanced Data Analysis</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Trend Analysis Card -->
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            <i class="fas fa-chart-line text-green-600 mr-2"></i>
+                            Trend Analysis
+                        </h3>
+                        <p class="text-gray-600 mb-4">View historical trends of your soil parameters.</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700">
+                            View Trends
+                        </button>
+                    </div>
+
+                    <!-- Correlation Analysis Card -->
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            <i class="fas fa-project-diagram text-green-600 mr-2"></i>
+                            Correlation Analysis
+                        </h3>
+                        <p class="text-gray-600 mb-4">Discover relationships between different soil parameters.</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700">
+                            Analyze Correlations
+                        </button>
+                    </div>
+
+                    <!-- Predictive Analysis Card -->
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            <i class="fas fa-robot text-green-600 mr-2"></i>
+                            Predictive Analysis
+                        </h3>
+                        <p class="text-gray-600 mb-4">Get AI-powered predictions for your crop yields.</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700">
+                            Generate Predictions
+                        </button>
+                    </div>
+
+                    <!-- Report Generation Card -->
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            <i class="fas fa-file-alt text-green-600 mr-2"></i>
+                            Report Generation
+                        </h3>
+                        <p class="text-gray-600 mb-4">Create detailed reports of your farm's performance.</p>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700">
+                            Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
