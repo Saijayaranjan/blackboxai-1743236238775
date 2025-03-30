@@ -101,7 +101,7 @@ function updateCropRecommendations(data) {
     }
 }
 
-// Dark Mode Toggle Functionality
+// Enhanced Dark Mode Toggle
 function setupDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     if (!darkModeToggle) return;
@@ -110,10 +110,17 @@ function setupDarkMode() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     // Initialize based on user preference or system preference
-    if (localStorage.getItem('darkMode') === 'enabled' || 
-        (localStorage.getItem('darkMode') === null && prefersDark)) {
+    const storedMode = localStorage.getItem('darkMode');
+    if (storedMode === 'enabled' || (storedMode === null && prefersDark)) {
         document.documentElement.classList.add('dark');
-        icon?.classList?.replace('fa-moon', 'fa-sun');
+        if (icon) {
+            icon.className = 'fas fa-sun text-yellow-300';
+        }
+    } else if (storedMode === 'disabled') {
+        document.documentElement.classList.remove('dark');
+        if (icon) {
+            icon.className = 'fas fa-moon text-gray-600';
+        }
     }
 
     // Set up click handler
@@ -121,11 +128,46 @@ function setupDarkMode() {
         const isDark = document.documentElement.classList.toggle('dark');
         if (icon) {
             if (isDark) {
-                icon.classList.replace('fa-moon', 'fa-sun');
+                icon.className = 'fas fa-sun text-yellow-300';
                 localStorage.setItem('darkMode', 'enabled');
             } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
+                icon.className = 'fas fa-moon text-gray-600';
                 localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+        
+        // Update chart colors if exists
+        if (typeof chart !== 'undefined') {
+            chart.data.datasets.forEach(dataset => {
+                dataset.borderColor = isDark ? 
+                    dataset.label.includes('Moisture') ? 'rgb(74, 222, 128)' :
+                    dataset.label.includes('Temperature') ? 'rgb(248, 113, 113)' :
+                    'rgb(56, 182, 255)' :
+                    dataset.label.includes('Moisture') ? 'rgb(75, 192, 192)' :
+                    dataset.label.includes('Temperature') ? 'rgb(255, 99, 132)' :
+                    'rgb(54, 162, 235)';
+                
+                dataset.backgroundColor = isDark ? 
+                    dataset.label.includes('Moisture') ? 'rgba(74, 222, 128, 0.1)' :
+                    dataset.label.includes('Temperature') ? 'rgba(248, 113, 113, 0.1)' :
+                    'rgba(56, 182, 255, 0.1)' :
+                    dataset.label.includes('Moisture') ? 'rgba(75, 192, 192, 0.1)' :
+                    dataset.label.includes('Temperature') ? 'rgba(255, 99, 132, 0.1)' :
+                    'rgba(54, 162, 235, 0.1)';
+            });
+            chart.update();
+        }
+    });
+
+    // Listen for system color scheme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.getItem('darkMode') === null) {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+                if (icon) icon.className = 'fas fa-sun text-yellow-300';
+            } else {
+                document.documentElement.classList.remove('dark');
+                if (icon) icon.className = 'fas fa-moon text-gray-600';
             }
         }
     });
